@@ -3,7 +3,16 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  recipe_keys = list(recipe.keys())
+  batches_able = []
+  for i in recipe_keys:
+    if ingredients.get(i) != None:
+      num = ingredients[i] // recipe[i]
+      batches_able.append(num)
+    else:
+      return 0
+  total = min(batches_able)
+  return(total)
 
 
 if __name__ == '__main__':

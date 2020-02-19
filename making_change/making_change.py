@@ -3,7 +3,19 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+  combos = [0] * (amount + 1)
+  combos[0] = 1
+  for i in denominations:
+    if amount >= i:
+      for ind in range(0, len(combos)):
+        if ind >= i:
+          sub_index = ind - i
+          new_val = combos[sub_index] + combos[ind]
+          combos[ind] = new_val
+  return(combos[-1])
+
+
+print(making_change(300, [1, 5, 10, 25, 50]))
 
 
 if __name__ == "__main__":
